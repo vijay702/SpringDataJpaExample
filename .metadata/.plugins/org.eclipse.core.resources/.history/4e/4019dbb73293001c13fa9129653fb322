@@ -1,0 +1,27 @@
+package com.fastxpo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fastxpo.model.Partner;
+import com.fastxpo.service.PartnerService;
+
+@RestController
+public class PartnerController {
+	
+	@Autowired
+	private PartnerService partnerService;
+	
+	
+	@PostMapping("/partner.htm")
+	public Partner savePartner(@RequestBody Partner partner ) {
+		return partnerService.savePartner(partner);
+		
+	
+	}
+	
+	
+
+}

@@ -1,0 +1,5 @@
+package com.fastxpo.repository;
+
+public interface DueRepository {
+
+}

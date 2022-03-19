@@ -1,0 +1,5 @@
+package com.fastxpo.model;
+
+public class Payment {
+
+}

@@ -1,0 +1,73 @@
+localhost:8086/api/login.htm
+req:{"password":"1234","mobile":"9884502652"}
+resp:
+{
+    "createdate": null,
+    "modifytime": null,
+    "status": null,
+    "createby": null,
+    "modifyby": null,
+    "channel": null,
+    "partnerid": 1,
+    "mpartnerid": null,
+    "name": "Rafi",
+    "businessname": null,
+    "mobile": "9884502652",
+    "address": null,
+    "email": null,
+    "password": "1234",
+    "pin": null,
+    "charge": null,
+    "apistatus": null,
+    "apimsg": null
+}
+
+
+localhost:8086/api/signup.htm
+req:{"name":"Gafoor","password":"1234","mobile":"9884238609"}
+resp:
+{
+    "createdate": null,
+    "modifytime": null,
+    "status": null,
+    "createby": null,
+    "modifyby": null,
+    "channel": null,
+    "partnerid": 2,
+    "mpartnerid": null,
+    "name": "Gafoor",
+    "businessname": null,
+    "mobile": "9884238609",
+    "address": null,
+    "email": null,
+    "password": "1234",
+    "pin": null,
+    "charge": null,
+    "apistatus": null,
+    "apimsg": null
+}
+
+
+localhost:8086/api/update.htm
+req:{"businessname":"haram1","address":"1234","mobile":"9884238609"}
+resp:
+{
+    "createdate": null,
+    "modifytime": null,
+    "status": null,
+    "createby": null,
+    "modifyby": null,
+    "channel": null,
+    "partnerid": 2,
+    "mpartnerid": null,
+    "name": null,
+    "businessname": "haram1",
+    "mobile": "9884238609",
+    "address": "chennai",
+    "email": null,
+    "password": null,
+    "pin": null,
+    "charge": null,
+    "apistatus": null,
+    "apimsg": null
+}

@@ -1,0 +1,18 @@
+package com.fastxpo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+@SpringBootApplication
+@EnableAutoConfiguration
+@ComponentScan({"model","controller","repository","service"})
+
+public class DailyCollectionApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DailyCollectionApplication.class, args);
+	}
+
+}

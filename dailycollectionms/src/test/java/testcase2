@@ -1,0 +1,22 @@
+localhost:8086/api/updatecompany.htm
+{"name":"Gafoor","password":"1234","mobile":"9884238609","partnerid":1,"businessname":"BC LTDx","adddress":"122121","charge":12.50}
+{
+    "createdate": null,
+    "modifytime": null,
+    "status": null,
+    "createby": null,
+    "modifyby": null,
+    "channel": null,
+    "partnerid": 1,
+    "mpartnerid": null,
+    "name": "Gafoor",
+    "businessname": "BC LTDx",
+    "mobile": "9884238609",
+    "address": null,
+    "email": null,
+    "password": "1234",
+    "pin": null,
+    "charge": 12.50,
+    "apistatus": null,
+    "apimsg": null
+}

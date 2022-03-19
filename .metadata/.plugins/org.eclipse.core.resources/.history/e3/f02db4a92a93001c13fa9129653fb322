@@ -1,0 +1,75 @@
+package model;
+
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.UniqueElements;
+
+@Entity
+public class Borrower {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GenericGenerator(name = "native", strategy = "native")
+	private Long borrowerId;
+	
+	@ManyToOne
+	@JoinColumn(name ="partnerId")
+	private Partner partner;
+	
+	private String name;
+	@UniqueElements
+	private String mobile;
+    private String address;
+    
+    
+	public Borrower(Long borrowerId, String name, @UniqueElements String mobile, String address) {
+		super();
+		this.borrowerId = borrowerId;
+		this.name = name;
+		this.mobile = mobile;
+		this.address = address;
+	}
+	public Long getBorrowerId() {
+		return borrowerId;
+	}
+	public void setBorrowerId(Long borrowerId) {
+		this.borrowerId = borrowerId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	@Override
+	public String toString() {
+		return "Borrower [borrowerId=" + borrowerId + ", name=" + name + ", mobile=" + mobile + ", address=" + address
+				+ "]";
+	}
+
+     public Borrower() {
+    	 
+     }
+    
+    
+	
+
+}

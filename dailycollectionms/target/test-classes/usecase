@@ -1,0 +1,168 @@
+CREATE NEW CHIT
+MAKE AUCTION:
+COLLECT PAYMENT: (update payment for a auction)
+
+
+SignUp:
+localhost:8086/api/signup.htm
+{"name":"Gafoor","password":"1234","mobile":"9884238609"}  - PartnerID:1
+
+
+Chit: (step1) and Peoples
+localhost:8086/api/chit.htm
+{"chitname":"3K","members":3,"duration":3,"amount":3000,"partner":{"partnerid":1},"chitstatus":"PUBLISHED","chittype":"daily","operation":"PENDING","mchitid":1,"peoples":[{"mpeopleid":1,"name":"Gafoor","mobile":"9884502345"},{"mpeopleid":2,"name":"Abdul","mobile":"9884238609"},{"mpeopleid":3,"name":"Ravi","mobile":"8129921921"}]}
+// reply with chidID and PeopleID
+// Need to Check Auctions***
+
+
+Bid: (step2)
+localhost:8086/api/auction.htm
+
+{"chit":{"chitid":1},
+"auctiondate":"12/09/2020","auctionstatus":"RUNNING","chitamt":3000.00,"bidamt":2700.00,"charge":0.00,"memberamt":"900","mauctionid":1,"people":{"peopleid":1}
+}
+// reply with auctionID
+
+localhost:8086/api/auctionwithdues.htm
+Dues: (step3)
+{"auctionid":1,"dues":[
+{"people":{"peopleid":1},"mdueid":1,"duedate":"12/09/2020","dueamt":900,"duestatus":"PAID","payments":[{"mpaymentid":1,"paidamt":900,"mode":"PhonePe","detail":"Onlinexx"}]},
+{"people":{"peopleid":2},"mdueid":2,"duedate":"12/09/2020","dueamt":900,"duestatus":"PAID","payments":[{"mpaymentid":2,"paidamt":900,"mode":"CASH","detail":"by handx"}]},
+{"people":{"peopleid":3},"mdueid":3,"duedate":"12/09/2020","dueamt":900,"duestatus":"PAID","payments":[{"mpaymentid":3,"paidamt":900,"mode":"CASH","detail":"by handx"}]}
+
+]
+}
+Step3A
+  - Update Auction Status- Completed.
+	{"auctionid":1,"auctionstatus":"COMPLETED"}
+	
+//REPEATE	
+
+{"chit":{"chitid":1},
+"auctiondate":"13/09/2020","auctionstatus":"RUNNING","chitamt":3000.00,"bidamt":2400.00,"charge":0.00,"memberamt":"800","mauctionid":1,"people":{"peopleid":2}
+}
+{"auctionid":2,"dues":[
+{"people":{"peopleid":1},"mdueid":4,"duedate":"13/09/2020","dueamt":800,"duestatus":"PAID","payments":[{"mpaymentid":4,"paidamt":800,"mode":"PhonePe","detail":"Onlinexx"}]},
+{"people":{"peopleid":2},"mdueid":5,"duedate":"13/09/2020","dueamt":800,"duestatus":"PAID","payments":[{"mpaymentid":5,"paidamt":800,"mode":"CASH","detail":"by handx"}]},
+{"people":{"peopleid":3},"mdueid":6,"duedate":"13/09/2020","dueamt":800,"duestatus":"PAID","payments":[{"mpaymentid":6,"paidamt":800,"mode":"CASH","detail":"by handx"}]}
+
+]
+}
+
+{"auctionid":3,"auctionstatus":"COMPLETED"}
+
+
+{"chit":{"chitid":1},
+"auctiondate":"14/09/2020","auctionstatus":"RUNNING","chitamt":3000.00,"bidamt":3000.00,"charge":0.00,"memberamt":"1000","mauctionid":4,"people":{"peopleid":3}
+}
+
+
+{"chit":{"chitid":1},
+"auctiondate":"13/09/2020","auctionstatus":"RUNNING","chitamt":3000.00,"bidamt":2400.00,"charge":0.00,"memberamt":"800","mauctionid":1,"people":{"peopleid":2}
+}
+{"auctionid":4,"dues":[
+{"people":{"peopleid":1},"mdueid":7,"duedate":"14/09/2020","dueamt":1000,"duestatus":"PAID","payments":[{"mpaymentid":7,"paidamt":800,"mode":"PhonePe","detail":"Onlinexx"}]},
+{"people":{"peopleid":2},"mdueid":8,"duedate":"14/09/2020","dueamt":1000,"duestatus":"PAID","payments":[{"mpaymentid":8,"paidamt":800,"mode":"CASH","detail":"by handx"}]},
+{"people":{"peopleid":3},"mdueid":9,"duedate":"14/09/2020","dueamt":1000,"duestatus":"PAID","payments":[{"mpaymentid":9,"paidamt":800,"mode":"CASH","detail":"by handx"}]}
+
+]
+}
+// CONSOLE LOG
+{"auctionid":4,"auctionstatus":"COMPLETED"}
+request
+2020-09-12 02:06:02 DEBUG c.f.s.PartnerServiceImpl:38 - Creating com.fastxpo.bean.Partner@2cfd88db
+Hibernate: select partner0_.partnerid as col_0_0_ from partner partner0_ where partner0_.mobile=?
+Hibernate: insert into partner (address, apimsg, apistatus, businessname, charge, email, mobile, mpartnerid, name, password, pin) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+partnerID::1
+2020-09-12 02:06:02 INFO  c.f.c.ChitfundController:156 - Total Time Taken for Order Req and Res : 262
+chitPartnercom.fastxpo.bean.Partner@780587a
+chitPartner1
+Hibernate: insert into chit (amount, chitname, chitstatus, chittype, duration, imgname, imgpath, imgurl, mchitid, members, operation, partnerid) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: insert into people (chitid, email, idattach, idattachpath, idattachurl, idproof, imgname, imgpath, imgurl, mobile, mpeopleid, name) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: insert into people (chitid, email, idattach, idattachpath, idattachurl, idproof, imgname, imgpath, imgurl, mobile, mpeopleid, name) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: insert into people (chitid, email, idattach, idattachpath, idattachurl, idproof, imgname, imgpath, imgurl, mobile, mpeopleid, name) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: update people set chitid=? where peopleid=?
+Hibernate: update people set chitid=? where peopleid=?
+Hibernate: update people set chitid=? where peopleid=?
+2020-09-12 02:07:48 INFO  c.f.c.ChitfundController:49 - Total Time Taken for Order Req and Res : 193
+2020-09-12 02:12:06 INFO  c.f.Application:61 - Started Application in 7.111 seconds (JVM running for 7.732)
+chitcom.fastxpo.bean.Chit@7f985e3f
+chitID1
+Hibernate: insert into auction (auctiondate, auctionstatus, bidamt, charge, chitid, chitamt, finalamt, mauctionid, memberamt, membercontributeamt, memberinterestamt, peopleid) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Completed DB 
+chit.
+2020-09-12 02:12:10 INFO  c.f.c.ChitfundController:91 - Total Time Taken for Order Req and Res : 411
+
+Dues[com.fastxpo.bean.Due@68c67031, com.fastxpo.bean.Due@32eef923, com.fastxpo.bean.Due@3aeb49]
+auction...1
+Hibernate: select auction0_.auctionid as auctioni1_0_0_, auction0_.auctiondate as auctiond2_0_0_, auction0_.auctionstatus as auctions3_0_0_, auction0_.bidamt as bidamt4_0_0_, auction0_.charge as charge5_0_0_, auction0_.chitid as chitid12_0_0_, auction0_.chitamt as chitamt6_0_0_, auction0_.finalamt as finalamt7_0_0_, auction0_.mauctionid as mauction8_0_0_, auction0_.memberamt as memberam9_0_0_, auction0_.membercontributeamt as memberc10_0_0_, auction0_.memberinterestamt as memberi11_0_0_, auction0_.peopleid as peoplei13_0_0_, people1_.peopleid as peopleid1_5_1_, people1_.chitid as chitid13_5_1_, people1_.email as email2_5_1_, people1_.idattach as idattach3_5_1_, people1_.idattachpath as idattach4_5_1_, people1_.idattachurl as idattach5_5_1_, people1_.idproof as idproof6_5_1_, people1_.imgname as imgname7_5_1_, people1_.imgpath as imgpath8_5_1_, people1_.imgurl as imgurl9_5_1_, people1_.mobile as mobile10_5_1_, people1_.mpeopleid as mpeople11_5_1_, people1_.name as name12_5_1_, chit2_.chitid as chitid1_1_2_, chit2_.amount as amount2_1_2_, chit2_.chitname as chitname3_1_2_, chit2_.chitstatus as chitstat4_1_2_, chit2_.chittype as chittype5_1_2_, chit2_.duration as duration6_1_2_, chit2_.imgname as imgname7_1_2_, chit2_.imgpath as imgpath8_1_2_, chit2_.imgurl as imgurl9_1_2_, chit2_.mchitid as mchitid10_1_2_, chit2_.members as members11_1_2_, chit2_.operation as operati12_1_2_, chit2_.partnerid as partner13_1_2_ from auction auction0_ left outer join people people1_ on auction0_.peopleid=people1_.peopleid left outer join chit chit2_ on people1_.chitid=chit2_.chitid where auction0_.auctionid=?
+Hibernate: select partner0_.partnerid as partneri1_3_0_, partner0_.address as address2_3_0_, partner0_.apimsg as apimsg3_3_0_, partner0_.apistatus as apistatu4_3_0_, partner0_.businessname as business5_3_0_, partner0_.charge as charge6_3_0_, partner0_.email as email7_3_0_, partner0_.mobile as mobile8_3_0_, partner0_.mpartnerid as mpartner9_3_0_, partner0_.name as name10_3_0_, partner0_.password as passwor11_3_0_, partner0_.pin as pin12_3_0_ from partner partner0_ where partner0_.partnerid=?
+Hibernate: insert into due (auctionid, dueamt, duedate, duestatus, mdueid, peopleid) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into payment (detail, dueid, mode, mpaymentid, paidamt, paydate, paystatus) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: update payment set dueid=? where paymentid=?
+Hibernate: insert into due (auctionid, dueamt, duedate, duestatus, mdueid, peopleid) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into payment (detail, dueid, mode, mpaymentid, paidamt, paydate, paystatus) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: update payment set dueid=? where paymentid=?
+Hibernate: insert into due (auctionid, dueamt, duedate, duestatus, mdueid, peopleid) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into payment (detail, dueid, mode, mpaymentid, paidamt, paydate, paystatus) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: update payment set dueid=? where paymentid=?
+DB Saved
+2020-09-12 02:16:56 INFO  c.f.c.ChitfundController:106 - Total Time Taken for Order Req and Res : 388
+auctionID::1
+Completed DB 
+chit.
+Hibernate: select auction0_.auctionid as auctioni1_0_0_, auction0_.auctiondate as auctiond2_0_0_, auction0_.auctionstatus as auctions3_0_0_, auction0_.bidamt as bidamt4_0_0_, auction0_.charge as charge5_0_0_, auction0_.chitid as chitid12_0_0_, auction0_.chitamt as chitamt6_0_0_, auction0_.finalamt as finalamt7_0_0_, auction0_.mauctionid as mauction8_0_0_, auction0_.memberamt as memberam9_0_0_, auction0_.membercontributeamt as memberc10_0_0_, auction0_.memberinterestamt as memberi11_0_0_, auction0_.peopleid as peoplei13_0_0_, people1_.peopleid as peopleid1_5_1_, people1_.chitid as chitid13_5_1_, people1_.email as email2_5_1_, people1_.idattach as idattach3_5_1_, people1_.idattachpath as idattach4_5_1_, people1_.idattachurl as idattach5_5_1_, people1_.idproof as idproof6_5_1_, people1_.imgname as imgname7_5_1_, people1_.imgpath as imgpath8_5_1_, people1_.imgurl as imgurl9_5_1_, people1_.mobile as mobile10_5_1_, people1_.mpeopleid as mpeople11_5_1_, people1_.name as name12_5_1_, chit2_.chitid as chitid1_1_2_, chit2_.amount as amount2_1_2_, chit2_.chitname as chitname3_1_2_, chit2_.chitstatus as chitstat4_1_2_, chit2_.chittype as chittype5_1_2_, chit2_.duration as duration6_1_2_, chit2_.imgname as imgname7_1_2_, chit2_.imgpath as imgpath8_1_2_, chit2_.imgurl as imgurl9_1_2_, chit2_.mchitid as mchitid10_1_2_, chit2_.members as members11_1_2_, chit2_.operation as operati12_1_2_, chit2_.partnerid as partner13_1_2_ from auction auction0_ left outer join people people1_ on auction0_.peopleid=people1_.peopleid left outer join chit chit2_ on people1_.chitid=chit2_.chitid where auction0_.auctionid=?
+Hibernate: select partner0_.partnerid as partneri1_3_0_, partner0_.address as address2_3_0_, partner0_.apimsg as apimsg3_3_0_, partner0_.apistatus as apistatu4_3_0_, partner0_.businessname as business5_3_0_, partner0_.charge as charge6_3_0_, partner0_.email as email7_3_0_, partner0_.mobile as mobile8_3_0_, partner0_.mpartnerid as mpartner9_3_0_, partner0_.name as name10_3_0_, partner0_.password as passwor11_3_0_, partner0_.pin as pin12_3_0_ from partner partner0_ where partner0_.partnerid=?
+Completed DB 
+2020-09-12 02:29:35 INFO  c.f.c.ChitfundController:105 - Total Time Taken for Order Req and Res : 228
+
+//sakib log
+request
+2020-09-13 01:41:46 DEBUG c.f.s.PartnerServiceImpl:38 - Creating com.fastxpo.bean.Partner@9ebace1
+Hibernate: select partner0_.partnerid as col_0_0_ from partner partner0_ where partner0_.mobile=?
+2020-09-13 01:41:47 INFO  c.f.s.PartnerServiceImpl:41 - Customer Already Exist9884238609
+2020-09-13 01:41:47 INFO  c.f.c.ChitfundController:170 - Total Time Taken for Order Req and Res : 222
+chitPartnercom.fastxpo.bean.Partner@eb76de9
+chitPartner1
+Hibernate: insert into chit (amount, chitname, chitstatus, chittype, duration, imgname, imgpath, imgurl, mchitid, members, operation, partnerid) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: insert into people (chitid, email, idattach, idattachpath, idattachurl, idproof, imgname, imgpath, imgurl, mobile, mpeopleid, name) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: insert into people (chitid, email, idattach, idattachpath, idattachurl, idproof, imgname, imgpath, imgurl, mobile, mpeopleid, name) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: insert into people (chitid, email, idattach, idattachpath, idattachurl, idproof, imgname, imgpath, imgurl, mobile, mpeopleid, name) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: update people set chitid=? where peopleid=?
+Hibernate: update people set chitid=? where peopleid=?
+Hibernate: update people set chitid=? where peopleid=?
+2020-09-13 01:49:46 INFO  c.f.c.ChitfundController:49 - Total Time Taken for Order Req and Res : 3178
+chitcom.fastxpo.bean.Chit@3f152bbe
+chitID2
+Hibernate: insert into auction (auctiondate, auctionstatus, bidamt, charge, chitid, chitamt, finalamt, mauctionid, memberamt, membercontributeamt, memberinterestamt, peopleid) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Completed DB 
+chit.
+2020-09-13 01:52:39 INFO  c.f.c.ChitfundController:91 - Total Time Taken for Order Req and Res : 108
+Dues[com.fastxpo.bean.Due@2dd67d35, com.fastxpo.bean.Due@3ce16193, com.fastxpo.bean.Due@557bef8d]
+auction...5
+Hibernate: select auction0_.auctionid as auctioni1_0_0_, auction0_.auctiondate as auctiond2_0_0_, auction0_.auctionstatus as auctions3_0_0_, auction0_.bidamt as bidamt4_0_0_, auction0_.charge as charge5_0_0_, auction0_.chitid as chitid12_0_0_, auction0_.chitamt as chitamt6_0_0_, auction0_.finalamt as finalamt7_0_0_, auction0_.mauctionid as mauction8_0_0_, auction0_.memberamt as memberam9_0_0_, auction0_.membercontributeamt as memberc10_0_0_, auction0_.memberinterestamt as memberi11_0_0_, auction0_.peopleid as peoplei13_0_0_, people1_.peopleid as peopleid1_5_1_, people1_.chitid as chitid13_5_1_, people1_.email as email2_5_1_, people1_.idattach as idattach3_5_1_, people1_.idattachpath as idattach4_5_1_, people1_.idattachurl as idattach5_5_1_, people1_.idproof as idproof6_5_1_, people1_.imgname as imgname7_5_1_, people1_.imgpath as imgpath8_5_1_, people1_.imgurl as imgurl9_5_1_, people1_.mobile as mobile10_5_1_, people1_.mpeopleid as mpeople11_5_1_, people1_.name as name12_5_1_, chit2_.chitid as chitid1_1_2_, chit2_.amount as amount2_1_2_, chit2_.chitname as chitname3_1_2_, chit2_.chitstatus as chitstat4_1_2_, chit2_.chittype as chittype5_1_2_, chit2_.duration as duration6_1_2_, chit2_.imgname as imgname7_1_2_, chit2_.imgpath as imgpath8_1_2_, chit2_.imgurl as imgurl9_1_2_, chit2_.mchitid as mchitid10_1_2_, chit2_.members as members11_1_2_, chit2_.operation as operati12_1_2_, chit2_.partnerid as partner13_1_2_ from auction auction0_ left outer join people people1_ on auction0_.peopleid=people1_.peopleid left outer join chit chit2_ on people1_.chitid=chit2_.chitid where auction0_.auctionid=?
+Hibernate: select partner0_.partnerid as partneri1_3_0_, partner0_.address as address2_3_0_, partner0_.apimsg as apimsg3_3_0_, partner0_.apistatus as apistatu4_3_0_, partner0_.businessname as business5_3_0_, partner0_.charge as charge6_3_0_, partner0_.email as email7_3_0_, partner0_.mobile as mobile8_3_0_, partner0_.mpartnerid as mpartner9_3_0_, partner0_.name as name10_3_0_, partner0_.password as passwor11_3_0_, partner0_.pin as pin12_3_0_ from partner partner0_ where partner0_.partnerid=?
+Hibernate: insert into due (auctionid, dueamt, duedate, duestatus, mdueid, peopleid) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into payment (detail, dueid, mode, mpaymentid, paidamt, paydate, paystatus) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: update payment set dueid=? where paymentid=?
+Hibernate: insert into due (auctionid, dueamt, duedate, duestatus, mdueid, peopleid) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into payment (detail, dueid, mode, mpaymentid, paidamt, paydate, paystatus) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: update payment set dueid=? where paymentid=?
+Hibernate: insert into due (auctionid, dueamt, duedate, duestatus, mdueid, peopleid) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into payment (detail, dueid, mode, mpaymentid, paidamt, paydate, paystatus) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: update payment set dueid=? where paymentid=?
+DB Saved
+2020-09-13 01:54:22 INFO  c.f.c.ChitfundController:120 - Total Time Taken for Order Req and Res : 1046
+chitcom.fastxpo.bean.Chit@456a5748
+chitID1
+Hibernate: insert into auction (auctiondate, auctionstatus, bidamt, charge, chitid, chitamt, finalamt, mauctionid, memberamt, membercontributeamt, memberinterestamt, peopleid) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Completed DB 
+chit.
+2020-09-13 01:55:17 INFO  c.f.c.ChitfundController:91 - Total Time Taken for Order Req and Res : 298
+chitcom.fastxpo.bean.Chit@45905a4a
+chitID2
+Hibernate: insert into auction (auctiondate, auctionstatus, bidamt, charge, chitid, chitamt, finalamt, mauctionid, memberamt, membercontributeamt, memberinterestamt, peopleid) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Completed DB 
+chit.
+2020-09-13 01:55:27 INFO  c.f.c.ChitfundController:91 - Total Time Taken for Order Req and Res : 161
+

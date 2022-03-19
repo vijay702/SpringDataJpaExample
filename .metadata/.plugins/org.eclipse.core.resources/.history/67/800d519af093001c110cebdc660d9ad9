@@ -1,0 +1,9 @@
+package com.fastxpo.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.fastxpo.model.Due;
+
+public interface DueRepository extends JpaRepository<Due, Long> {
+
+}

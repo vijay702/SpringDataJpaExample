@@ -1,0 +1,13 @@
+package com.fastxpo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DailyCollectionApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DailyCollectionApplication.class, args);
+	}
+
+}

@@ -1,0 +1,45 @@
+localhost:8086/api/savepeople.htm
+req:{"name":"Sakib","mobile":"9897792487"}
+resp:
+{
+    "createdate": null,
+    "modifytime": null,
+    "status": null,
+    "createby": null,
+    "modifyby": null,
+    "channel": null,
+    "peopleid": 1,
+    "name": "Sakib",
+    "mobile": "9897792487",
+    "email": null,
+    "imgname": null,
+    "imgpath": null,
+    "imgurl": null,
+    "idproof": null,
+    "idattach": null,
+    "idattachpath": null,
+    "idattachurl": null
+}
+
+localhost:8086/api/savepeople.htm
+req:{"name":"Gafoor Bhai","mobile":"1234567891"}
+resp:
+{
+    "createdate": null,
+    "modifytime": null,
+    "status": null,
+    "createby": null,
+    "modifyby": null,
+    "channel": null,
+    "peopleid": 2,
+    "name": "Gafoor Bhai",
+    "mobile": "1234567891",
+    "email": null,
+    "imgname": null,
+    "imgpath": null,
+    "imgurl": null,
+    "idproof": null,
+    "idattach": null,
+    "idattachpath": null,
+    "idattachurl": null
+}
